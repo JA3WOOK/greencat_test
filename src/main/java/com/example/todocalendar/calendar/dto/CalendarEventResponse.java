@@ -3,6 +3,7 @@ package com.example.todocalendar.calendar.dto;
 import com.example.todocalendar.calendar.entity.CalendarEventEntity;
 import com.example.todocalendar.calendar.entity.EventStatus;
 import com.example.todocalendar.calendar.entity.Location;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,6 +11,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +49,12 @@ public class CalendarEventResponse {
     @Schema(description = "이벤트 상태", example = "SCHEDULED")
     private EventStatus status;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime createdAt;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime updatedAt;
+
     public static CalendarEventResponse toDto(CalendarEventEntity event) {
         if(event == null) return null;
         return CalendarEventResponse.builder()
@@ -59,6 +67,8 @@ public class CalendarEventResponse {
                 .location(event.getLocation())
                 .sharedWithEmails(event.getSharedWithEmails())
                 .status(event.getStatus())
+                .createdAt(event.getCreatedAt())
+                .updatedAt(event.getUpdatedAt())
                 .build();
     }
 

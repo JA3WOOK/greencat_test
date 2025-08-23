@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS `calendar`
 (
     `id`          bigint(20) NOT NULL AUTO_INCREMENT,
-    `created_at`  datetime(6) DEFAULT NULL,
+    `created_at`  datetime DEFAULT CURRENT_TIMESTAMP,
     `date`        date          DEFAULT NULL,
     `description` varchar(1000) DEFAULT NULL,
     `end_time`    time(6)       DEFAULT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS `calendar`
     `start_time`  time(6)       DEFAULT NULL,
     `status`      enum('CANCELLED','COMPLETED','IN_PROGRESS','SCHEDULED') DEFAULT NULL,
     `title`       varchar(255)  DEFAULT NULL,
-    `updated_at`  datetime(6) DEFAULT NULL,
+    `updated_at`  datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -33,9 +33,9 @@ CREATE TABLE IF NOT EXISTS `todo`
 (
     `id`          bigint(20) NOT NULL AUTO_INCREMENT,
     `completed`   bit(1) NOT NULL,
-    `created_at`  datetime(6) NOT NULL,
+    `created_at`  datetime DEFAULT CURRENT_TIMESTAMP,
     `description` varchar(1000) DEFAULT NULL,
     `title`       varchar(255)  DEFAULT NULL,
-    `updated_at`  datetime(6) DEFAULT NULL,
+    `updated_at`  datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
