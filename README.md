@@ -16,9 +16,15 @@ git clone https://github.com/JA3WOOK/greencat_test.git
 # 2. 환경 설정
 # application.properties에 있는 DB 정보 기반 연결
 
-# 3. 실행
+# 3. 백엔드 실행
 src>main>java>GreencatApplication Run 실행 후 schema.sql, data.sql 파일 통해
 DB에 테이블과 테스트 데이터 자동생성
+
+# 4. 프론트엔드 실행
+터미널에서 cd greencat-frontend 이동 후
+npm install
+npm start
+
 ```
 
 ---
